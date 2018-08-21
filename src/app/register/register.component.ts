@@ -11,7 +11,7 @@ import {User} from '../models/User';
 })
 
 export class RegisterComponent {
-   model: any = {} ;
+   model: any = {};
    // model: User;
    loading = false;
 
@@ -21,6 +21,9 @@ export class RegisterComponent {
 
    register() {
      this.loading = true;
+
+     this.userService.getTest('OK!');
+
      this.userService.create(this.model)
        .subscribe(
          data => {

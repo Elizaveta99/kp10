@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import {UserService} from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { RegisterComponent } from './register/register.component';
     MatListModule,
     MatToolbarModule*/
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
