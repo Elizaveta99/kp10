@@ -22,7 +22,7 @@ export class RegisterComponent {
    register() {
      this.loading = true;
 
-     this.userService.getTest('OK!');
+     // this.userService.getTest('OK!');
 
      this.userService.create(this.model)
        .subscribe(

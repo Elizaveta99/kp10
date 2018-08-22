@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import {UserService} from './services/user.service';
+import {DataService} from './services/data.service';
+import {AuthenticationService} from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import {UserService} from './services/user.service';
     MatListModule,
     MatToolbarModule*/
   ],
-  providers: [UserService],
+  providers: [UserService,
+              AuthenticationService,
+              DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
