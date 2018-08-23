@@ -21,9 +21,9 @@ export class AuthenticationService {
       { username: username, password: password }, httpOptions)
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
-        if (user /*&& user.token*/) {
+        if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          // localStorage.setItem('currentUser', JSON.stringify(user));  ???
+           localStorage.setItem('currentUser', JSON.stringify(user));
         }
 
         return user;

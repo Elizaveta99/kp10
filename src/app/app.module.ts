@@ -14,13 +14,17 @@ import { RegisterComponent } from './register/register.component';
 import {UserService} from './services/user.service';
 import {DataService} from './services/data.service';
 import {AuthenticationService} from './services/authentication.service';
+import { AlertComponent } from './alert/alert.component';
+import {AuthGuard} from './guards/auth.guard';
+import {AlertService} from './services/alert.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import {AuthenticationService} from './services/authentication.service';
     MatListModule,
     MatToolbarModule*/
   ],
-  providers: [UserService,
+  providers: [AuthGuard,
+              AlertService,
+              UserService,
               AuthenticationService,
               DataService
   ],

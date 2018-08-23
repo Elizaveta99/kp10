@@ -26,8 +26,7 @@ export class UserService {
     return this.http.get('http://localhost:8080/home/users');
 }
 
-  create(user: User)
-  {
+  create(user: User) {
     console.log('POST');
     return this.http.post('http://localhost:8080/home', JSON.stringify(user), httpOptions);
   }
