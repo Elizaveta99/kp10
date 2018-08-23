@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {AuthenticationService} from '../services/authentication.service';
 import {AlertService} from '../services/alert.service';
 
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -26,12 +27,15 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/user'; // ??? || '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home'; // ??? || '/'
   }
 
   login() {
     this.loading = true;
     this.authenticationService.login(this.model.username, this.model.password)
+      .pipe(map(data => {
+        return this.authenticationService.getMe();
+      }))
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);

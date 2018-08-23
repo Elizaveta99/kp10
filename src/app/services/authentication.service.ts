@@ -17,7 +17,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
-    return this.http.post<any>('/login/authenticate',
+    return this.http.post<any>('http://localhost:8080/auth/login', // ??? /login/authenticate'
       { username: username, password: password }, httpOptions)
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
@@ -29,6 +29,11 @@ export class AuthenticationService {
         return user;
       }));
   }
+
+  getMe() {
+    return this.http.get(`http://localhost:8080/auth/me`);
+  }
+
 
   logout() {
     // remove user from local storage to log user out
