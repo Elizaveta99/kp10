@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../services/data.service';
 
 
 @Component({
@@ -8,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  itemCount: number;
+  btnText: string = 'OK';
+  goalText: string = '';
+  goals = [];
+
+  constructor(private _data: DataService) { }
 
   ngOnInit() {
+    this.itemCount = this.goals.length;
+    this._data.goal.subscribe(res => this.goals = res);
+    this._data.changeGoal(this.goals);
   }
+
+  addItem() {
+    this.goals.push(this.goalText);
+    this.goalText = '';
+    this.itemCount = this.goals.length;
+    this._data.changeGoal(this.goals);
+  }
+
+  /*removeItem(i) {
+    this.goals.splice(i, 1);
+    this.itemCount = this.goals.length;
+    this._data.changeGoal(this.goals);
+  }*/
 
 }
